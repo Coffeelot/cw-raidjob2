@@ -102,21 +102,13 @@ Items to add to ox_inventory>data>items.lua
 	},
 
 ```
-## Making the names show up in to the Inventory 📦
-If you want to make the vehicle name show up in QB-Inventory:
-Open `app.js` in `qb-inventory`. In the function `FormatItemInfo` you will find several if statements. Head to the bottom of these and add this before the second to last `else` statement (after the `else if` that has `itemData.name == "labkey"`). Then add this between them:
-```
-else if (itemData.name == "swap_slip") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Vehicle: " + itemData.info.vehicle + "</p>");
-        }
-``` 
 
 Also make sure the images are in qb-inventory>html>images
 
 # Dependencies
 
 * qb-target - https://github.com/BerkieBb/qb-target
+* PS-UI - https://github.com/Project-Sloth/ps-ui/
 
 
 ## Developed by Coffeelot#1586 and Wuggie#1683
