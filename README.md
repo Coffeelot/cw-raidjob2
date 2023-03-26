@@ -1,5 +1,23 @@
 # Raidjob 2
+Better desc coming soon. Currently in beta release.
 
+
+Biggest differences:
+- The missions are now tiered (low, mid and high by default. You can create whatever tiers you want in the config)
+- Each tier has a set of locations, when the mission is started it randomizes between these.
+- Each tier has one mission giver
+- The location of the case is always random
+- The key is not given when starting no more, you have to find the enemy that was holding it and loot them (using Target)
+- Attempts at making this a group job, using renewed phone, has been done (not tested yet)
+This means the script lets all members of the group trigger stuff, not just the mission taker. Anyone can turn in the goods, but the payout only goes to the one that turns it it, and the buy in is paid by the one that starts it. There will be NO added auto-split  deal with it.
+- Intergration with mz-skills for rep
+- Enemies are spawned serverside, so should sync better... hopefully
+
+The best way to describe 2 compared to 1 is that it's a lot less Wallmart Heist and a lot more in the style of just a job. The focus being to be able to have multiple locations and have access to them controlled in an easy way. So low Tier might be easy to start, just a chunk of pocket change and you're good to go, while you might lock medium tier behind a Rep or a token.
+If you used BoostJob, the way the missions are given is more like that, but each tier will have a different NPC 
+This also means raidjob(1) will be fully unsupported, and have reached it's End Of Life. No more patches, fixes or support will come to the current script.
+
+[Raidjob 1](https://github.com/Coffeelot/cw-raidjob)
 
 # Preview 📽
 <!-- [![YOUTUBE VIDEO](http://img.youtube.com/vi/3BmZ8fIAXpg/0.jpg)](https://youtu.be/3BmZ8fIAXpg) -->
