@@ -25,26 +25,6 @@ Config.DefaultValues = {
     accuracy = 40,
 }
 
-Config.Bosses = {
-    low = {
-        coords = vector4(-159.55, 1907.82, 198.01, 88.75),
-        model = 'g_f_importexport_01',
-        missionTitle = "Accept weed raid",
-        animation = 'WORLD_HUMAN_SMOKING_POT', -- OPTIONAL https://pastebin.com/6mrYTdQv
-    },
-    mid = {
-        coords = vector4(-2609.76, 1867.66, 167.32, 347.67),
-        model = 'g_m_m_mexboss_01',
-        missionTitle = "Accept meth raid",
-    },
-    high = {
-        coords = vector4(-2604.37, 1861.04, 167.32, 307.56),
-        model = 'a_m_m_golfer_01',
-        missionTitle = "Accept art theft job",
-        animation = 'WORLD_HUMAN_GOLF_PLAYER', -- OPTIONAL https://pastebin.com/6mrYTdQv
-    },
-}
-
 local lowLoc = {
     burroHeights = {
         name = 'burroHeights',
