@@ -171,188 +171,136 @@ local midLoc = {
             vector3(1228.32, -2956.67, 11.19),
         }
     },
-    lostCompound = { -- MADE BY Plomyk#0001
-        name = 'lostCompound',
-        coords = vector3(55.25, 3695.23, 44.05),
-        Guards = {
-            { model = 'g_m_y_lost_01', weapon = 'weapon_pistol', },
-            { model = 'g_m_y_lost_03', weapon = 'weapon_pistol' },
-            { model = 'g_m_y_lost_02', weapon = 'weapon_pistol' },
-        },
-        GuardPositions = {
-            vector4(45.21, 3658.65, 39.94, 219.51),
-            vector4(62.71, 3657.16, 39.25, 198.76),
-            vector4(84.22, 3645.43, 39.62, 144.73),
-            vector4(91.87, 3651.02, 43.67, 130.24),
-            vector4(94.4, 3677.59, 43.87, 159.95),
-            vector4(70.28, 3604.3, 39.44, 178.85),
-            vector4(100.19, 3700.97, 39.91, 142.92)
-        },
-        GuardCars = { 
-            { model = 'ratloader', coords = vector4(111.71, 3571.5, 39.72, 54.55) },
-         },
-        CasePositions = {
-            vector3(49.32, 3650.27, 40.5),
-            vector3(51.2, 3673.26, 41.0),
-            vector3(87.48, 3654.71, 40.66)
-        }
-    },
-    lostCompound = { -- MADE BY Plomyk#0001
-    name = 'lostCompound',
-    coords = vector3(55.25, 3695.23, 44.05),
-    Guards = {
-        { model = 'g_m_y_lost_01', weapon = 'weapon_pistol', },
-        { model = 'g_m_y_lost_03', weapon = 'weapon_pistol' },
-        { model = 'g_m_y_lost_02', weapon = 'weapon_pistol' },
-    },
-    GuardPositions = {
-        vector4(45.21, 3658.65, 39.94, 219.51),
-        vector4(62.71, 3657.16, 39.25, 198.76),
-        vector4(84.22, 3645.43, 39.62, 144.73),
-        vector4(91.87, 3651.02, 43.67, 130.24),
-        vector4(94.4, 3677.59, 43.87, 159.95),
-        vector4(70.28, 3604.3, 39.44, 178.85),
-        vector4(100.19, 3700.97, 39.91, 142.92)
-    },
-    GuardCars = { 
-        { model = 'ratloader', coords = vector4(111.71, 3571.5, 39.72, 54.55) },
-     },
-    CasePositions = {
-        vector3(49.32, 3650.27, 40.5),
-        vector3(51.2, 3673.26, 41.0),
-        vector3(87.48, 3654.71, 40.66)
-    }
-},
 }
 
 local highLoc = {
     lafuenta = {
-    --     name = 'lafuenta',
-    --     coords = vector3(1388.11, 1136.84, 114.3),
-    --     Guards = {
-    --         { model = 'cs_manuel', weapon = 'WEAPON_PISTOL50', coords = vector4(1420.13, 1151.03, 114.67, 252.27)},
-    --         { model = 'g_m_y_mexgang_01', weapon = 'weapon_machinepistol' },
-    --         { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
-    --         { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
-    --         { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
-    --         { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
-    --     },
-    --     GuardPositions = {
-    --         vector4(1381.07, 1149.81, 114.33, 87.54),
-    --         vector4(1386.84, 1126.88, 114.33, 89.23),
-    --         vector4(1414.17, 1138.47, 114.33, 278.73),
-    --         vector4(1430.9, 1125.33, 114.27, 243.4),
-    --         vector4(1427.85, 1175.72, 114.09, 326.71),
-    --         vector4(1387.27, 1176.44, 114.38, 102.63),
-    --         vector4(1391.82, 1154.31, 114.44, 101.95),
-    --         vector4(1398.65, 1122.17, 114.84, 169.99),
-    --         vector4(1401.89, 1122.27, 114.84, 177.42),
-    --         vector4(1409.85, 1131.96, 114.33, 275.09),
-    --         vector4(1409.08, 1160.04, 114.33, 271.73)
-    --     },
-    --     Civilians = {
-    --         { model = 's_m_m_marine_02', animation = 'WORLD_HUMAN_BINOCULARS' }
-    --     },
-    --     CivilianPositions = {
-    --         vector4(1415.4, 1161.45, 114.67, 3.26)
-    --     },
-    --     GuardCars = { 
-    --         { model = 'baller4', coords = vector4(1335.64, 1137.98, 110.81, 99.93) },
-    --         { model = 'baller4', coords = vector4(1337.75, 1149.41, 112.36, 167.32) }
-    --     },
-    --     CasePositions = {
-    --         vector3(1416.75, 1144.57, 114.26),
-    --         vector3(1413.48, 1149.45, 114.16),
-    --         vector3(1414.94, 1162.04, 114.6),
-    --         vector3(1415.09, 1166.34, 114.6),
-    --         vector3(1419.58, 1132.47, 113.4),
-    --     }
+        name = 'lafuenta',
+        coords = vector3(1388.11, 1136.84, 114.3),
+        Guards = {
+            { model = 'cs_manuel', weapon = 'WEAPON_PISTOL50', coords = vector4(1420.13, 1151.03, 114.67, 252.27)},
+            { model = 'g_m_y_mexgang_01', weapon = 'weapon_machinepistol' },
+            { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
+        },
+        GuardPositions = {
+            vector4(1381.07, 1149.81, 114.33, 87.54),
+            vector4(1386.84, 1126.88, 114.33, 89.23),
+            vector4(1414.17, 1138.47, 114.33, 278.73),
+            vector4(1430.9, 1125.33, 114.27, 243.4),
+            vector4(1427.85, 1175.72, 114.09, 326.71),
+            vector4(1387.27, 1176.44, 114.38, 102.63),
+            vector4(1391.82, 1154.31, 114.44, 101.95),
+            vector4(1398.65, 1122.17, 114.84, 169.99),
+            vector4(1401.89, 1122.27, 114.84, 177.42),
+            vector4(1409.85, 1131.96, 114.33, 275.09),
+            vector4(1409.08, 1160.04, 114.33, 271.73)
+        },
+        Civilians = {
+            { model = 's_m_m_marine_02', animation = 'WORLD_HUMAN_BINOCULARS' }
+        },
+        CivilianPositions = {
+            vector4(1415.4, 1161.45, 114.67, 3.26)
+        },
+        GuardCars = { 
+            { model = 'baller4', coords = vector4(1335.64, 1137.98, 110.81, 99.93) },
+            { model = 'baller4', coords = vector4(1337.75, 1149.41, 112.36, 167.32) }
+        },
+        CasePositions = {
+            vector3(1416.75, 1144.57, 114.26),
+            vector3(1413.48, 1149.45, 114.16),
+            vector3(1414.94, 1162.04, 114.6),
+            vector3(1415.09, 1166.34, 114.6),
+            vector3(1419.58, 1132.47, 113.4),
+        }
     },
     lakevinewood = {
-    --     name = 'lakevinewood',
-    --     coords = vector3(-83.57, 958.0, 231.49),
-    --     Guards = {
-    --         { model = 'g_m_m_mexboss_02', weapon = 'WEAPON_PUMPSHOTGUN' },
-    --         { model = 'g_m_m_mexboss_02', weapon = 'weapon_pistol' },
-    --         { model = 'g_m_y_armgoon_02', weapon = 'weapon_pistol' },
-    --         { model = 'g_m_y_armgoon_02', weapon = 'weapon_pistol' },
-    --         { model = 'g_m_y_armgoon_02', weapon = 'weapon_pistol' },
-    --         { model = 'g_m_y_armgoon_02', weapon = 'weapon_machinepistol', accuracy = 5 },
-    --     },
-    --     GuardPositions = {
-    --         vector4(-113.27, 983.92, 235.76, 108.41),
-    --         vector4(-105.51, 974.53, 235.76, 200.63),
-    --         vector4(-102.46, 975.78, 235.76, 199.94),
-    --         vector4(-91.7, 944.77, 233.03, 338.29),
-    --         vector4(-83.68, 944.54, 233.03, 40.37),
-    --         vector4(-103.18, 1011.38, 235.76, 103.97),
-    --         vector4(-97.14, 1017.25, 235.82, 289.04),
-    --         vector4(-99.28, 975.88, 235.76, 194.21),
-    --         vector4(-94.41, 964.25, 232.81, 81.4),
-    --         vector4(-98.62, 952.28, 232.81, 345.5),
-    --         vector4(-75.37, 940.4, 232.81, 353.36),
-    --         vector4(-84.16, 941.73, 233.03, 91.99),
-    --         vector4(-91.07, 942.47, 233.03, 188.21)
-    --     },
-    --     Civilians = {
-    --         { model = 'a_f_y_beach_01', animation = 'WORLD_HUMAN_PARTYING' },
-    --         { model = 'a_f_y_beach_01', animation = 'WORLD_HUMAN_PARTYING' },
-    --         { model = 'a_m_y_beach_03', animation = 'WORLD_HUMAN_PARTYING' }
-    --     },
-    --     CivilianPositions = {
-    --         vector4(-86.32, 949.83, 232.81, 57.35),
-    --         vector4(-87.68, 948.63, 232.81, 350.2),
-    --         vector4(-89.53, 949.73, 232.81, 265.41),
-    --         vector4(-86.92, 940.43, 233.03, 170.28),
-    --     },
-    --     GuardCars = { 
-    --         { model = 'landstalker2', coords = vector4(-136.02, 977.28, 235.27, 219.36) },
-    --         { model = 'landstalker2', coords = vector4(-129.89, 978.94, 235.25, 147.02) },
-    --         { model = 'entityxf', coords = vector4(-123.52, 1007.19, 235.13, 200.9) }
-    --     },
-    --     CasePositions = {
-    --         vector3(-81.94, 944.58, 232.03),
-    --         vector3(-87.51, 939.06, 232.45),
-    --         vector3(-89.69, 940.13, 232.46),
-    --         vector3(-100.77, 944.03, 233.28),
-    --         vector3(-71.86, 966.04, 232.2),
-    --         vector3(-83.07, 967.3, 232.24),
-    --     }
+        name = 'lakevinewood',
+        coords = vector3(-83.57, 958.0, 231.49),
+        Guards = {
+            { model = 'g_m_m_mexboss_02', weapon = 'WEAPON_PUMPSHOTGUN' },
+            { model = 'g_m_m_mexboss_02', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_armgoon_02', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_armgoon_02', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_armgoon_02', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_armgoon_02', weapon = 'weapon_machinepistol', accuracy = 5 },
+        },
+        GuardPositions = {
+            vector4(-113.27, 983.92, 235.76, 108.41),
+            vector4(-105.51, 974.53, 235.76, 200.63),
+            vector4(-102.46, 975.78, 235.76, 199.94),
+            vector4(-91.7, 944.77, 233.03, 338.29),
+            vector4(-83.68, 944.54, 233.03, 40.37),
+            vector4(-103.18, 1011.38, 235.76, 103.97),
+            vector4(-97.14, 1017.25, 235.82, 289.04),
+            vector4(-99.28, 975.88, 235.76, 194.21),
+            vector4(-94.41, 964.25, 232.81, 81.4),
+            vector4(-98.62, 952.28, 232.81, 345.5),
+            vector4(-75.37, 940.4, 232.81, 353.36),
+            vector4(-84.16, 941.73, 233.03, 91.99),
+            vector4(-91.07, 942.47, 233.03, 188.21)
+        },
+        Civilians = {
+            { model = 'a_f_y_beach_01', animation = 'WORLD_HUMAN_PARTYING' },
+            { model = 'a_f_y_beach_01', animation = 'WORLD_HUMAN_PARTYING' },
+            { model = 'a_m_y_beach_03', animation = 'WORLD_HUMAN_PARTYING' }
+        },
+        CivilianPositions = {
+            vector4(-86.32, 949.83, 232.81, 57.35),
+            vector4(-87.68, 948.63, 232.81, 350.2),
+            vector4(-89.53, 949.73, 232.81, 265.41),
+            vector4(-86.92, 940.43, 233.03, 170.28),
+        },
+        GuardCars = { 
+            { model = 'landstalker2', coords = vector4(-136.02, 977.28, 235.27, 219.36) },
+            { model = 'landstalker2', coords = vector4(-129.89, 978.94, 235.25, 147.02) },
+            { model = 'entityxf', coords = vector4(-123.52, 1007.19, 235.13, 200.9) }
+        },
+        CasePositions = {
+            vector3(-81.94, 944.58, 232.03),
+            vector3(-87.51, 939.06, 232.45),
+            vector3(-89.69, 940.13, 232.46),
+            vector3(-100.77, 944.03, 233.28),
+            vector3(-71.86, 966.04, 232.2),
+            vector3(-83.07, 967.3, 232.24),
+        }
     },
     lakevinewood2 = {
-    --     name = 'lakevinewood2',
-    --     coords = vector3(-156.61, 883.19, 232.46),
-    --     Guards = {
-    --         { model = 'mp_m_securoguard_01', weapon = 'weapon_pistol' },
-    --         { model = 'mp_m_securoguard_01', weapon = 'WEAPON_SMG' },
-    --         { model = 'mp_m_securoguard_01', weapon = 'weapon_pistol' },
-    --         { model = 'mp_m_securoguard_01', weapon = 'weapon_pistol' },
-    --         { model = 'mp_m_securoguard_01', weapon = 'weapon_pistol' },
-    --     },
-    --     GuardPositions = {
-    --         vector4(-135.76, 899.35, 235.66, 283.48),
-    --         vector4(-139.0, 881.63, 233.48, 133.12),
-    --         vector4(-160.7, 925.8, 239.94, 291.47)
-    --     },
-    --     Civilians = {
-    --         { model = 'a_f_y_runner_01', animation = 'WORLD_HUMAN_YOGA' }
-    --     },
-    --     CivilianPositions = {
-    --         vector4(-157.44, 877.93, 237.77, 187.0)
-    --     },
-    --     GuardCars = { 
-    --         { model = 'baller4', coords = vector4(-141.67, 910.2, 235.8, 243.79) },
-    --         { model = 'granger', coords = vector4(-120.49, 910.81, 235.43, 19.1) }
-    --     },
-    --     CasePositions = {
-    --         vector3(-156.47, 883.21, 232.46),
-    --         vector3(-160.4, 879.45, 232.14),
-    --         vector3(-137.59, 869.99, 232.45),
-    --         vector3(-171.53, 857.15, 232.04),
-    --         vector3(-179.45, 878.35, 232.46),
-    --         vector3(-165.83, 886.73, 236.14),
-    --         vector3(-157.39, 879.11, 236.77),
-    --     }
+        name = 'lakevinewood2',
+        coords = vector3(-156.61, 883.19, 232.46),
+        Guards = {
+            { model = 'mp_m_securoguard_01', weapon = 'weapon_pistol' },
+            { model = 'mp_m_securoguard_01', weapon = 'WEAPON_SMG' },
+            { model = 'mp_m_securoguard_01', weapon = 'weapon_pistol' },
+            { model = 'mp_m_securoguard_01', weapon = 'weapon_pistol' },
+            { model = 'mp_m_securoguard_01', weapon = 'weapon_pistol' },
+        },
+        GuardPositions = {
+            vector4(-135.76, 899.35, 235.66, 283.48),
+            vector4(-139.0, 881.63, 233.48, 133.12),
+            vector4(-160.7, 925.8, 239.94, 291.47)
+        },
+        Civilians = {
+            { model = 'a_f_y_runner_01', animation = 'WORLD_HUMAN_YOGA' }
+        },
+        CivilianPositions = {
+            vector4(-157.44, 877.93, 237.77, 187.0)
+        },
+        GuardCars = { 
+            { model = 'baller4', coords = vector4(-141.67, 910.2, 235.8, 243.79) },
+            { model = 'granger', coords = vector4(-120.49, 910.81, 235.43, 19.1) }
+        },
+        CasePositions = {
+            vector3(-156.47, 883.21, 232.46),
+            vector3(-160.4, 879.45, 232.14),
+            vector3(-137.59, 869.99, 232.45),
+            vector3(-171.53, 857.15, 232.04),
+            vector3(-179.45, 878.35, 232.46),
+            vector3(-165.83, 886.73, 236.14),
+            vector3(-157.39, 879.11, 236.77),
+        }
     },
     butcher = { -- MADE BY x58k#7833
         name = 'butcher',
