@@ -518,8 +518,11 @@ RegisterServerEvent('cw-raidjob2:server:givePayout', function(diff)
 end)
 
 QBCore.Functions.CreateUseableItem(Config.Items.caseItem, function(source, item)
-    print('used case', item.info.diff)
-    TriggerClientEvent('cw-raidjob2:client:attemtpToUnlockCase', source, item.info.diff)
+    if Config.Inventory == 'ox' then
+      TriggerClientEvent('cw-raidjob2:client:attemtpToUnlockCase', source, item.metadata.diff)
+    else
+      TriggerClientEvent('cw-raidjob2:client:attemtpToUnlockCase', source, item.info.diff)
+    end
 end)
 
 -- cool down for job
