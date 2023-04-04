@@ -1,4 +1,4 @@
-local QBCore = exports['qb-core']:GetCoreObject() 
+local QBCore = exports['qb-core']:GetCoreObject()
 local useDebug = Config.Debug
 
 -- Constants
@@ -67,23 +67,25 @@ local function activateRun(src, jobDiff, jobLocation)
         spawnTriggered = false,
         Group = {}
     }
+    TriggerEvent('cw-raidjob2:server:coolout', src)
 
     if Config.UseRenewedPhoneGroups then
         local group = exports['qb-phone']:GetGroupByMembers(src)
         local members = exports['qb-phone']:getGroupMembers(group)
-        
+
         local memberTable = {}
         for i, v in pairs(members) do
-            print(i,v)
+            if useDebug then
+               print('member', i,v)
+            end
             memberTable[#memberTable+1]= { [i] = 1}
-            -- start job for people
+            TriggerClientEvent('cw-raidjob2:client:runactivate', i, jobId, jobDiff, jobLocation)
         end
         ActiveJobs[jobId].Group = memberTable
     else
         ActiveJobs[jobId].Group = {
             [src] = 1
         }
-        TriggerEvent('cw-raidjob2:server:coolout', src)
         TriggerClientEvent('cw-raidjob2:client:runactivate', src, jobId, jobDiff, jobLocation)
     end
 end
@@ -163,7 +165,9 @@ local function spawnVehicles(jobId, jobDiff, jobLocation)
             local transport = CreateVehicle(vehicle.model, GuardVehicleCoords.x, GuardVehicleCoords.y, GuardVehicleCoords.z, GuardVehicleCoords.w, true, true)
 
             while not DoesEntityExist(transport) do
-                print('vehicle dont exist', transport)
+                if useDebug then
+                   print('vehicle dont exist', transport)
+                end
                 Wait(100)
             end
             local networkID = 'SOMETHINGSWRONG'
@@ -171,7 +175,9 @@ local function spawnVehicles(jobId, jobDiff, jobLocation)
                 networkID = NetworkGetNetworkIdFromEntity(transport)
             end
 
-            print('vehcile', transport, networkID)
+            if useDebug then
+               print('vehicle', transport, networkID)
+            end
             vehicleList[networkID] = transport
         end
         npcVehicles[jobId] = vehicleList
@@ -221,14 +227,16 @@ local function spawnGuards(jobId, jobDiff, jobLocation)
         SetPedRandomComponentVariation(ped, 0)
         SetPedRandomProps(ped)
         SetPedArmour(ped, armor)
-    
+
         Npcs[GuardPopGroup][networkID] = ped
         GuardStats[networkID] = {
             accuracy = accuracy,
             hasKey = false
         }
         if k == 1 then
-            print('giving key to', networkID)
+            if useDebug then
+               print('giving key to', networkID)
+            end
             GuardStats[networkID].hasKey = true
         end
     end
@@ -244,11 +252,11 @@ local function spawnCivilians(jobId, jobDiff, jobLocation)
     local CurrentJobLocation = Config.Locations[jobDiff][jobLocation]
     if CurrentJobLocation.Civilians then
         local listOfCivilianPositions = nil
-    
+
         if CurrentJobLocation.CivilianPositions ~= nil then
             listOfCivilianPositions = shallowCopy(CurrentJobLocation.CivilianPositions) -- these are used if random positions
         end
-    
+
         for k, v in pairs(CurrentJobLocation.Civilians) do
             local civPosition = v.coords
             local animation = nil
@@ -263,11 +271,11 @@ local function spawnCivilians(jobId, jobDiff, jobLocation)
             end
             local accuracy = Config.DefaultValues.accuracy
             local ped = CreatePed(26, GetHashKey(v.model), civPosition, true, true)
-            
+
             local networkID = NetworkGetNetworkIdFromEntity(ped)
             SetPedRandomComponentVariation(ped, 0)
             SetPedRandomProps(ped)
-        
+
             Npcs[CivPopGroup][networkID] = ped
         end
     end
@@ -280,8 +288,10 @@ local function spawnCase(jobId, jobDiff, jobLocation)
 
     local caseLocation = CasePositions[math.random(1,#CasePositions)]
     local case = CreateObject(prop, caseLocation.x, caseLocation.y, caseLocation.z, true,  true, true)
-    print(caseLocation.x,caseLocation.y,caseLocation.z)
-    print('case:', case)
+    if useDebug then
+       print(caseLocation.x,caseLocation.y,caseLocation.z)
+       print('case:', case)
+    end
     SetEntityHeading(case, math.random(180)*1.0)
     FreezeEntityPosition(case, true)
     while not DoesEntityExist(case) do
@@ -450,7 +460,7 @@ RegisterServerEvent('cw-raidjob2:server:unlock', function (jobId)
     local caseItem = Config.Items.caseItem
     local caseKey = Config.Items.key
     if hasItem(caseKey, ActiveJobs[jobId].diff, src) then
-        if hasItem(caseItem, ActiveJobs[jobId].diff, src) then 
+        if hasItem(caseItem, ActiveJobs[jobId].diff, src) then
             if removeItemBySlot(caseItem, ActiveJobs[jobId].diff, src) then
                 if removeItemBySlot(caseKey, ActiveJobs[jobId].diff, src) then
                     if useDebug then
@@ -518,8 +528,8 @@ RegisterServerEvent('cw-raidjob2:server:givePayout', function(diff)
 end)
 
 QBCore.Functions.CreateUseableItem(Config.Items.caseItem, function(source, item)
-    print('used case', item.info.diff)
-    TriggerClientEvent('cw-raidjob2:client:attemtpToUnlockCase', source, item.info.diff)
+    print('used case', item.metadata.diff)
+    TriggerClientEvent('cw-raidjob2:client:attemtpToUnlockCase', source, item.metadata.diff)
 end)
 
 -- cool down for job

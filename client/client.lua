@@ -154,6 +154,7 @@ CreateThread(function()
                 icon = job.icon,
                 label = Config.Jobs[diff].description,
                 canInteract = function()
+                    if not Config.Enabled then return false end
                     return canInteract(diff)
                 end
             },
@@ -164,6 +165,7 @@ CreateThread(function()
                 icon = 'fas fa-hand-holding-usd',
                 label = Lang:t('info.turn_in_goods'),
                 canInteract = function()
+                    if not Config.Enabled then return false end
                     return canInteract(diff) and hasContent(Config.Items.caseContent, diff)
                 end
             }
@@ -279,21 +281,21 @@ local function caseGps()
     end
 end
 
-local function caseIsUnlockedMessage()
+local function caseIsUnlockedMessage(diff)
     Citizen.Wait(2000)
     local sender =  ''
 	local subject = ''
 	local message = ''
 
-    if Config.Jobs[CurrentJob.jobDiff].Messages.Finish then
-        if Config.Jobs[CurrentJob.jobDiff].Messages.Finish.sender then
-            sender = Config.Jobs[CurrentJob.jobDiff].Messages.Finish.sender
+    if Config.Jobs[diff].Messages.Finish then
+        if Config.Jobs[diff].Messages.Finish.sender then
+            sender = Config.Jobs[diff].Messages.Finish.sender
         end
-        if Config.Jobs[CurrentJob.jobDiff].Messages.Finish.subject then
-            subject = Config.Jobs[CurrentJob.jobDiff].Messages.Finish.subject
+        if Config.Jobs[diff].Messages.Finish.subject then
+            subject = Config.Jobs[diff].Messages.Finish.subject
         end
-        if Config.Jobs[CurrentJob.jobDiff].Messages.Finish.message then
-            message = Config.Jobs[CurrentJob.jobDiff].Messages.Finish.message
+        if Config.Jobs[diff].Messages.Finish.message then
+            message = Config.Jobs[diff].Messages.Finish.message
         end
     end
 
@@ -436,24 +438,32 @@ local function setStats(ped, stats)
 end
 
 RegisterNetEvent('cw-raidjob2:client:updateSpawned', function()
-    print('enemies are being spawned')
+    if useDebug then
+       print('enemies are being spawned')
+    end
     CurrentJob.enemisHaveBeenSpawned = true
 end)
 
 RegisterNetEvent('cw-raidjob2:client:setRelationsAndStats', function(npcs, npcStats)
     local ped = PlayerPedId()
     local trash, guardGroupHash = AddRelationshipGroup(GuardPopGroup)
-    print('created guard group has', guardGroupHash)
     local trash, civGroupHash = AddRelationshipGroup(CivPopGroup)
-    print('created civ group has', civGroupHash)
+    if useDebug then
+       print('created guard group has', guardGroupHash)
+       print('created civ group has', civGroupHash)
+    end
     
     for networkId, v in pairs(npcs[GuardPopGroup]) do
-        print('guards', networkId,v)
+        if useDebug then
+           print('guards', networkId,v)
+        end
         while not DoesEntityExist(NetworkGetEntityFromNetworkId(networkId)) do
             Wait(100)
         end
         local entity = NetworkGetEntityFromNetworkId(networkId)
-        print('Guard entity', entity)
+        if useDebug then
+           print('Guard entity', entity)
+        end
         SetPedRelationshipGroupHash(entity, guardGroupHash)
         setStats(entity, npcStats[networkId])
         Entities[#Entities+1] = entity
@@ -463,7 +473,9 @@ RegisterNetEvent('cw-raidjob2:client:setRelationsAndStats', function(npcs, npcSt
         end
     end
     for networkId, v in pairs(npcs[CivPopGroup]) do
-        print('civs', networkId,v)
+        if useDebug then
+           print('civs', networkId,v)
+        end
         while not DoesEntityExist(NetworkGetEntityFromNetworkId(networkId)) do 
             Wait(100)
         end
@@ -475,9 +487,13 @@ RegisterNetEvent('cw-raidjob2:client:setRelationsAndStats', function(npcs, npcSt
 end)
 
 RegisterNetEvent('cw-raidjob2:client:setVehicleEntities', function(vehicles)
-    print('vehicles:', vehicles)
+    if useDebug then
+       print('vehicles:', vehicles)
+    end
     if vehicles then
-        QBCore.Debug(vehicles)
+        if useDebug then
+           QBCore.Debug(vehicles)
+        end
         for networkId, v in pairs(vehicles) do
             while not DoesEntityExist(NetworkGetEntityFromNetworkId(networkId)) do 
                 Wait(100)
@@ -539,9 +555,6 @@ end)
 
 local function getTableLength(diff)
     local count = 0
-    print('Get lenght')
-    print(diff)
-    print(Config.Locations[diff])
     for i, v in pairs(Config.Locations[diff]) do
         count = count+1
     end
@@ -550,9 +563,6 @@ end
 
 local function generateNameList(diff)
     local names = {}
-    print('generate list')
-    print(diff)
-    print(Config.Locations[diff])
     for i, v in pairs(Config.Locations[diff]) do
         names[#names+1] = i
     end
@@ -612,9 +622,10 @@ end)
 local function caseGrabbed()
     CurrentJob.case = nil
     caseAquiredMessage()
+    local diff = CurrentJob.jobDiff
     SetTimeout(Config.Jobs[CurrentJob.jobDiff].timer, function()
         CurrentJob.caseIsUnlocked = true
-        caseIsUnlockedMessage()
+        caseIsUnlockedMessage(diff)
     end)
 end
 
