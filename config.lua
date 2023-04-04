@@ -1,6 +1,7 @@
 Config = {}
 
 Config.Debug = true
+Config.Enabled = true
 Config.CleanupTimer = 20000
 
 Config.UseTokens = false
@@ -9,7 +10,7 @@ Config.Inventory = 'qb'
 Config.UseMZSkills = false
 Config.Skill = 'Street Reputation'
 
-Config.UseSundownUtils = false -- This should be false if you're not using Sundown Utils, which you probably aren't
+Config.UseSundownUtils = false -- This should be false if you're not using Sundown Utils
 
 Config.UseRenewedPhoneGroups = false
 Config.MaxGroupSize = 5 -- only used if UseRenewedPhoneGroups is true
@@ -17,9 +18,9 @@ Config.SpawnDistance = 200
 
 Config.UseRenewedCrypto = false -- set to true if you use renewed phone crypto
 Config.CryptoType = 'MOON' -- set your crypto here
+Config.BossTalkTime = 5000
 
-Config.Cooldown = 1 --- Cooldown until next allowed run (in seconds)
-Config.BossTalkTime = 1000
+Config.Cooldown = 10000 --- Cooldown until next allowed run (in seconds)
 Config.DefaultValues = {
     armor = 10,
     accuracy = 40,
@@ -155,46 +156,46 @@ local midLoc = {
 
 local highLoc = {
     lafuenta = {
-        name = 'lafuenta',
-        coords = vector3(1388.11, 1136.84, 114.3),
-        Guards = {
-            { model = 'cs_manuel', weapon = 'WEAPON_PISTOL50', coords = vector4(1420.13, 1151.03, 114.67, 252.27)},
-            { model = 'g_m_y_mexgang_01', weapon = 'weapon_machinepistol' },
-            { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
-            { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
-            { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
-            { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
-        },
-        GuardPositions = {
-            vector4(1381.07, 1149.81, 114.33, 87.54),
-            vector4(1386.84, 1126.88, 114.33, 89.23),
-            vector4(1414.17, 1138.47, 114.33, 278.73),
-            vector4(1430.9, 1125.33, 114.27, 243.4),
-            vector4(1427.85, 1175.72, 114.09, 326.71),
-            vector4(1387.27, 1176.44, 114.38, 102.63),
-            vector4(1391.82, 1154.31, 114.44, 101.95),
-            vector4(1398.65, 1122.17, 114.84, 169.99),
-            vector4(1401.89, 1122.27, 114.84, 177.42),
-            vector4(1409.85, 1131.96, 114.33, 275.09),
-            vector4(1409.08, 1160.04, 114.33, 271.73)
-        },
-        Civilians = {
-            { model = 's_m_m_marine_02', animation = 'WORLD_HUMAN_BINOCULARS' }
-        },
-        CivilianPositions = {
-            vector4(1415.4, 1161.45, 114.67, 3.26)
-        },
-        GuardCars = { 
-            { model = 'baller4', coords = vector4(1335.64, 1137.98, 110.81, 99.93) },
-            { model = 'baller4', coords = vector4(1337.75, 1149.41, 112.36, 167.32) }
-        },
-        CasePositions = {
-            vector3(1416.75, 1144.57, 114.26),
-            vector3(1413.48, 1149.45, 114.16),
-            vector3(1414.94, 1162.04, 114.6),
-            vector3(1415.09, 1166.34, 114.6),
-            vector3(1419.58, 1132.47, 113.4),
-        }
+         name = 'lafuenta',
+         coords = vector3(1388.11, 1136.84, 114.3),
+         Guards = {
+             { model = 'cs_manuel', weapon = 'WEAPON_PISTOL50', coords = vector4(1420.13, 1151.03, 114.67, 252.27)},
+             { model = 'g_m_y_mexgang_01', weapon = 'weapon_machinepistol' },
+             { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
+             { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
+             { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
+             { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol' },
+         },
+         GuardPositions = {
+             vector4(1381.07, 1149.81, 114.33, 87.54),
+             vector4(1386.84, 1126.88, 114.33, 89.23),
+             vector4(1414.17, 1138.47, 114.33, 278.73),
+             vector4(1430.9, 1125.33, 114.27, 243.4),
+             vector4(1427.85, 1175.72, 114.09, 326.71),
+             vector4(1387.27, 1176.44, 114.38, 102.63),
+             vector4(1391.82, 1154.31, 114.44, 101.95),
+             vector4(1398.65, 1122.17, 114.84, 169.99),
+             vector4(1401.89, 1122.27, 114.84, 177.42),
+             vector4(1409.85, 1131.96, 114.33, 275.09),
+             vector4(1409.08, 1160.04, 114.33, 271.73)
+         },
+         Civilians = {
+             { model = 's_m_m_marine_02', animation = 'WORLD_HUMAN_BINOCULARS' }
+         },
+         CivilianPositions = {
+             vector4(1415.4, 1161.45, 114.67, 3.26)
+         },
+         GuardCars = { 
+             { model = 'baller4', coords = vector4(1335.64, 1137.98, 110.81, 99.93) },
+             { model = 'baller4', coords = vector4(1337.75, 1149.41, 112.36, 167.32) }
+         },
+         CasePositions = {
+             vector3(1416.75, 1144.57, 114.26),
+             vector3(1413.48, 1149.45, 114.16),
+             vector3(1414.94, 1162.04, 114.6),
+             vector3(1415.09, 1166.34, 114.6),
+             vector3(1419.58, 1132.47, 113.4),
+         }
     },
     lakevinewood = {
         name = 'lakevinewood',
@@ -260,7 +261,16 @@ local highLoc = {
         GuardPositions = {
             vector4(-135.76, 899.35, 235.66, 283.48),
             vector4(-139.0, 881.63, 233.48, 133.12),
-            vector4(-160.7, 925.8, 239.94, 291.47)
+            vector4(-156.64, 858.4, 232.23, 312.35),
+            vector4(-143.41, 868.75, 232.7, 117.22),
+            vector4(-152.87, 911.94, 235.66, 16.73),
+            vector4(-139.17, 868.74, 232.7, 165.32),
+            vector4(-148.29, 881.29, 239.02, 181.17),
+            vector4(-143.51, 884.97, 239.02, 295.21),
+            vector4(-181.85, 883.65, 233.46, 111.9),
+            vector4(-182.27, 851.97, 232.7, 312.59),
+            vector4(-148.25, 880.31, 239.02, 189.06),
+            vector4(-170.82, 889.88, 237.14, 140.57),
         },
         Civilians = {
             { model = 'a_f_y_runner_01', animation = 'WORLD_HUMAN_YOGA' }
@@ -472,6 +482,7 @@ local highJob = {
         { item = '10kgoldchain', amount = 1, chance = 20 }
     }
 }
+
 Config.Jobs = {
     low = lowJob,
     mid = midJob,
