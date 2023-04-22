@@ -6,6 +6,7 @@ local Translations = {
         ["someone_recently_did_this"]   = "Someone recently did this, try again later..",
         ["you_failed"]                  = "You failed!",
         ["you_dont_have_enough_money"]  = "You Dont Have Enough Money",
+        ["not_opened"]  = "The timer on the case is still ticking!",
     },
     success = {
         ["you_removed_first_security_case"]     = "You removed the the first layer of security on the case",
@@ -29,16 +30,16 @@ local Translations = {
     },
     mailSecond = {
         ["sender"]                      = "Unknown",
-        ["subject"]                     = "Car Collection",
-        ["message"]                     = "Looks like you got the Car. There might be a tracker. I'll send you the dropoff location when it's safe.",
+        ["subject"]                     = "Case Collection",
+        ["message"]                     = "Looks like you got the case. There is a tracker. Wait until it's over then open the case with the key",
     },
     mailEnd = {
         ["sender"]                      = "Unknown",
-        ["subject"]                     = "Goods Delivered",
-        ["message"]                     = "Good job. Take the slip to someone who knows what to do",
+        ["subject"]                     = "Case Collection",
+        ["message"]                     = "Good job. Bring me the goods and make sure no cops are nearby.",
     },
     police = {
-        ["alert"]                       = " Car Theft In Progress (Tracker active): "
+        ["alert"]                       = "Theft in progress (Tracker active): "
     }
 }
 

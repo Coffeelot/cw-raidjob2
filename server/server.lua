@@ -69,7 +69,7 @@ local function activateRun(src, jobDiff, jobLocation)
     }
     TriggerEvent('cw-raidjob2:server:coolout', src)
 
-    if Config.UseRenewedPhoneGroups then
+    if Config.UseRenewedPhoneGroups and exports['qb-phone']:GetGroupByMembers(src) then
         local group = exports['qb-phone']:GetGroupByMembers(src)
         local members = exports['qb-phone']:getGroupMembers(group)
 

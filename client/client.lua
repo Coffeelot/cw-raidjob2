@@ -83,7 +83,7 @@ local function checkSkills(diff)
 end
 
 local function checkCops(diff)
-    return Config.Jobs[diff].minimumPolice <= CurrentCops
+    return Config.Jobs[diff].minimumPolice >= CurrentCops
 end
 
 local function getAllContent(object, diff)
@@ -122,7 +122,7 @@ local function canInteract(diff)
         hasToken = exports['cw-tokens']:hasToken(Config.Jobs[diff].token)
     end
 
-    return hasSkills and hasToken and hasCops
+    return hasSkills and hasToken
 end
 
 --- Create bosses
@@ -406,9 +406,9 @@ local function giveKey(ped)
                     local player = PlayerPedId()
                     RequestAnimDict("pickup_object")
                     while not HasAnimDictLoaded("pickup_object") do
-                        QBCore.Functions.Notify(Lang:t("info.picked_up_key"), 'success')
                         Wait(0)
                     end
+                    QBCore.Functions.Notify(Lang:t("info.picked_up_key"), 'success')
                     TaskPlayAnim(player, "pickup_object", "pickup_low", 8.0, -8.0, -1, 1, 0, false, false, false)
                     Wait(2000)
                     ClearPedTasks(player)
@@ -715,7 +715,11 @@ end
 
 RegisterNetEvent('cw-raidjob2:client:attemtpToUnlockCase', function(diff)
     if CurrentJob and CurrentJob.case == nil and CurrentJob.jobDiff == diff and CurrentJob.case == nil then
-        TriggerServerEvent('cw-raidjob2:server:unlock', CurrentJob.jobId)
+        if CurrentJob.caseIsUnlocked then
+            TriggerServerEvent('cw-raidjob2:server:unlock', CurrentJob.jobId)
+        else
+            QBCore.Functions.Notify(Lang:t('not_opened'), 'error')
+        end
     end
 end)
 
