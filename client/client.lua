@@ -83,7 +83,7 @@ local function checkSkills(diff)
 end
 
 local function checkCops(diff)
-    return Config.Jobs[diff].minimumPolice >= CurrentCops
+    return Config.Jobs[diff].minimumPolice <= CurrentCops
 end
 
 local function getAllContent(object, diff)
@@ -122,7 +122,7 @@ local function canInteract(diff)
         hasToken = exports['cw-tokens']:hasToken(Config.Jobs[diff].token)
     end
 
-    return hasSkills and hasToken
+    return hasSkills and hasToken and hasCops
 end
 
 --- Create bosses
