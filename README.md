@@ -31,7 +31,10 @@ This also means raidjob(1) will be fully unsupported, and have reached it's End 
 [Raidjob 1](https://github.com/Coffeelot/cw-raidjob)
 
 # Preview 📽
+## Showcase
 [![YOUTUBE VIDEO](https://youtu.be/ZBJHE9NxEnY/0.jpg)](https://youtu.be/ZBJHE9NxEnY)
+## Job Creation Showcase
+[![YOUTUBE VIDEO](https://youtu.be/tgw2OtYF9B0/0.jpg)](https://youtu.be/tgw2OtYF9B0)
 
 # Developed by Coffeelot and Wuggie
 [More scripts by us](https://github.com/stars/Coffeelot/lists/cw-scripts)  👈
