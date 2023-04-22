@@ -1,5 +1,5 @@
 # Raidjob 2
-A QB based script that is more of a system than a plug and play job script. To utalize this script to it's fullest you need to be able to at least do some Config devving, if that's to much then go find another script ✌ This script comes with several npcs and pre made locations and jobs to do, but the idea of it is for YOU to create your own jobs! The Config comes full off comments to guide you.
+A QB based script that is more of a system than a plug and play job script. To utilize this script to it's fullest you need to be able to at least do some Config devving, if that's to much then go find another script ✌ This script comes with several npcs and pre made locations and jobs to do, but the idea of it is for YOU to create your own jobs! The Config comes full off comments to guide you.
 
 Raidjob 2, much like Raidjob 1, sets up PVE raids. This time it also makes use of [Renewed Phone groups](https://github.com/Renewed-Scripts/qb-phone) (optional toggle in Config) for better team interaction. The goal is simple:
 1. Pay for the setup
