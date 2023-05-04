@@ -29,7 +29,7 @@ local Npcs = {
 
 -- == Start == --
 local function verifyIsLeader(src)
-    if Config.UseRenewedPhoneGroups then
+    if Config.UseRenewedPhoneGroups and exports['qb-phone']:GetGroupByMembers(src) then
         local group = exports['qb-phone']:GetGroupByMembers(src)
         local leader = exports['qb-phone']:GetGroupLeader(group)
         return leader == src
@@ -39,7 +39,7 @@ local function verifyIsLeader(src)
 end
 
 local function verifyGroupSize(src)
-    if Config.UseRenewedPhoneGroups then
+    if Config.UseRenewedPhoneGroups and exports['qb-phone']:GetGroupByMembers(src) then
         local group = exports['qb-phone']:GetGroupByMembers(src)
         local size = exports['qb-phone']:getGroupSize(group)
         return size <= Config.MaxGroupSize
@@ -435,6 +435,21 @@ RegisterNetEvent('cw-raidjob2:server:hasKeys', function(jobId)
     end
 end)
 
+RegisterNetEvent('cw-raidjob2:server:setCaseIsInUse', function(jobId, bool)
+    local src = source
+
+    if useDebug then
+       print(src, 'interacting with case')
+    end
+
+    for i,v in pairs(ActiveJobs[jobId].Group) do
+        if useDebug then
+           print('notifying player about case interaction', i, v)
+        end
+        TriggerClientEvent('cw-raidjob2:client:setCaseIsInUse', i, bool)
+    end
+end)
+
 RegisterServerEvent('cw-raidjob2:server:grabCase', function (jobId)
     local src = source
     if useDebug then
@@ -488,24 +503,22 @@ RegisterServerEvent('cw-raidjob2:server:givePayout', function(diff)
     local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
 
-
-    for k, v in pairs(Config.Jobs[diff].Rewards) do
-        local chance = math.random(0,100)
-        if useDebug then
-           print('chance for '..v.item..': '..chance)
-        end
-        if chance < v.chance then
-            Player.Functions.AddItem(v.item, v.amount)
-            if Config.Inventory == 'qb' then
-                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[v.item], "add")
-            elseif Config.Inventory == 'ox' then
-                TriggerClientEvent('inventory:client:ItemBox', src, exports.ox_inventory:Items()[v.item], "add")
-            end
-        end
-    end
-
     local caseContent = Config.Items.caseContent
     if removeItemBySlot(caseContent, diff, src) then
+        for k, v in pairs(Config.Jobs[diff].Rewards) do
+            local chance = math.random(0,100)
+            if useDebug then
+               print('chance for '..v.item..': '..chance)
+            end
+            if chance < v.chance then
+                Player.Functions.AddItem(v.item, v.amount)
+                if Config.Inventory == 'qb' then
+                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[v.item], "add")
+                elseif Config.Inventory == 'ox' then
+                    TriggerClientEvent('inventory:client:ItemBox', src, exports.ox_inventory:Items()[v.item], "add")
+                end
+            end
+        end
         local payoutType = Config.Jobs[diff].payoutType
         local payoutAmount = Config.Jobs[diff].payout
         if useDebug then

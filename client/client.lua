@@ -351,7 +351,7 @@ local function createCaseInteraction()
                         icon = "fas fa-key",
                         label = Lang:t('info.unlock_first'),
                         canInteract = function()
-                            return onRun
+                            return onRun and not CurrentJob.CaseIsInUse
                         end
                     },
                 },
@@ -401,6 +401,7 @@ local function giveKey(ped)
                 icon = 'fas fa-magnifying-glass',
                 label = Lang:t('info.search_key'),
                 action = function()
+					exports['qb-target']:RemoveTargetEntity(ped, 'Search for key')
                     CurrentJob.pedThatHasKey = nil
                     TriggerServerEvent('cw-raidjob2:server:hasKeys', CurrentJob.jobId)
                     local player = PlayerPedId()
@@ -412,7 +413,6 @@ local function giveKey(ped)
                     TaskPlayAnim(player, "pickup_object", "pickup_low", 8.0, -8.0, -1, 1, 0, false, false, false)
                     Wait(2000)
                     ClearPedTasks(player)
-					exports['qb-target']:RemoveTargetEntity(ped, 'Search for key')
                 end,
                 canInteract = function(entity)
                     if IsEntityDead(entity) then
@@ -543,6 +543,7 @@ RegisterNetEvent('cw-raidjob2:client:runactivate', function(jobId, jobDiff, jobL
     CurrentJob.enemisHaveBeenSpawned = false
     CurrentJob.jobId = jobId
     CurrentJob.caseIsUnlocked = false
+    CurrentJob.CaseIsInUse = false
     if useDebug then
         print('id', CurrentJob.jobId)
         print('diff', CurrentJob.jobDiff)
@@ -630,7 +631,7 @@ local function caseGrabbed()
 end
 
 local function MinigameSuccess()
-    QBCore.Functions.Progressbar("grab_case", Lang:t('info.unlocking_case'), 10000, false, true, {
+    QBCore.Functions.Progressbar("grab_case", Lang:t('info.unlocking_case'), 7000, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -639,7 +640,7 @@ local function MinigameSuccess()
     }, {}, {}, function() -- Done
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
         TriggerServerEvent('cw-raidjob2:server:grabCase', CurrentJob.jobId)
-
+        
         if (IsPedActiveInScenario(PlayerPedId()) == false) then
             DeleteEntity(CurrentJob.case)
             QBCore.Functions.Notify(Lang:t("success.you_removed_first_security_case"), 'success')
@@ -652,11 +653,15 @@ local function MinigameSuccess()
 end
 
 local function MinigameFailiure()
+    CurrentJob.CaseIsInUse = false
+    TriggerServerEvent('cw-raidjob2:server:setCaseIsInUse', CurrentJob.jobId, false)
     QBCore.Functions.Notify(Lang:t("error.you_failed"), 'error')
     TriggerEvent('animations:client:EmoteCommandStart', {"c"})
 end
 
 local function StartMinigame()
+    CurrentJob.CaseIsInUse = true
+    TriggerServerEvent('cw-raidjob2:server:setCaseIsInUse', CurrentJob.jobId, true)
     TriggerEvent('animations:client:EmoteCommandStart', {"parkingmeter"})
     if Config.Jobs[CurrentJob.jobDiff].Minigame.game then
         local type = Config.Jobs[CurrentJob.jobDiff].Minigame.game
@@ -718,7 +723,7 @@ RegisterNetEvent('cw-raidjob2:client:attemtpToUnlockCase', function(diff)
         if CurrentJob.caseIsUnlocked then
             TriggerServerEvent('cw-raidjob2:server:unlock', CurrentJob.jobId)
         else
-            QBCore.Functions.Notify(Lang:t('not_opened'), 'error')
+            QBCore.Functions.Notify(Lang:t('error.not_opened'), 'error')
         end
     end
 end)
@@ -744,6 +749,10 @@ RegisterNetEvent('cw-raidjob2:client:theftCall', function()
         local plate = GetVehicleNumberPlateText(MissionVehicle)
         TriggerServerEvent('police:server:policeAlert', Lang:t("police.alert")..plate)
     end
+end)
+
+RegisterNetEvent('cw-raidjob2:client:setCaseIsInUse', function(bool)
+    CurrentJob.CaseIsInUse = bool
 end)
 
 AddEventHandler('onResourceStop', function (resource)

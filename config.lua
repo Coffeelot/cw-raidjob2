@@ -111,6 +111,40 @@ local lowLoc = {
             vector3(2476.58, 3448.51, 49.72),
         }
     },
+    windFarm = {
+        name = 'windFarm',
+        coords = vector3(2101.46, 2331.92, 94.29),
+        Guards = {
+            { model = 'g_m_y_lost_01', weapon = 'weapon_shotgun', },
+            { model = 'g_m_y_lost_02', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_lost_03', weapon = 'weapon_machinepistol', accuracy = 5 },
+        },
+        GuardPositions = {
+            vector4(2101.46, 2331.92, 94.29, 91.23),
+            vector4(2093.2, 2345.21, 94.29, 112.51),
+            vector4(2112.93, 2347.26, 94.28, 305.5),
+            vector4(2112.4, 2333.58, 94.28, 267.88),
+            vector4(2112.26, 2309.86, 94.28, 190.62),
+            vector4(2088.9, 2312.1, 94.29, 110.07),
+            vector4(2094.43, 2320.3, 94.29, 210.42),
+            vector4(2092.98, 2325.9, 94.29, 75.52),
+            vector4(2102.97, 2326.06, 94.29, 271.86),
+        },
+        GuardCars = { 
+            { model = 'ratloader2', coords = vector4(2082.53, 2343.54, 93.43, 228.78) },
+            { model = 'gburrito', coords = vector4(2080.72, 2321.15, 93.93, 151.73) }
+         },
+        CasePositions = {
+            vector3(2105.57, 2324.87, 93.29),
+            vector3(2106.5, 2335.82, 93.32),
+            vector3(2100.87, 2342.57, 93.29),
+            vector3(2098.33, 2325.94, 93.29),
+            vector3(2094.94, 2327.1, 93.38),
+            vector3(2093.95, 2320.7, 93.29),
+            vector3(2108.31, 2320.22, 93.39),
+            vector3(2103.11, 2342.92, 93.29),
+        }
+    },
 }
 
 local midLoc = {
@@ -150,6 +184,46 @@ local midLoc = {
             vector3(1227.87, -3007.4, 9.25),
             vector3(1242.15, -2949.3, 8.91),
             vector3(1228.32, -2956.67, 11.19),
+        }
+    },
+    ogmeth = {
+        name = 'ogmeth',
+        coords = vector3(3813.02, 4462.52, 4.08),
+        Guards = {
+            { model = 'g_m_y_lost_01', weapon = 'weapon_shotgun', },
+            { model = 'g_m_y_lost_02', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_lost_03', weapon = 'weapon_machinepistol', accuracy = 5 },
+            { model = 'g_m_y_lost_02', weapon = 'weapon_pistol' },
+            { model = 'g_m_y_lost_03', weapon = 'weapon_machinepistol', accuracy = 5 },
+        },
+        GuardPositions = {
+            vector4(3801.4, 4474.58, 5.99, 122.4),
+            vector4(3797.37, 4478.01, 5.99, 120.72),
+            vector4(3808.2, 4477.65, 5.99, 203.02),
+            vector4(3820.34, 4483.36, 5.99, 247.86),
+            vector4(3819.53, 4470.82, 5.78, 137.56),
+            vector4(3837.09, 4462.28, 2.65, 26.16),
+            vector4(3820.03, 4451.96, 5.27, 49.67),
+            vector4(3801.47, 4446.92, 4.23, 18.61),
+            vector4(3792.14, 4453.03, 5.06, 48.72)
+        },
+        Civilians = {},
+        CivilianPositions = {},
+        GuardCars = { 
+            { model = 'gburrito', coords = vector4(3791.62, 4463.33, 5.52, 171.5) },
+            { model = 'ratloader', coords = vector4(3799.85, 4458.75, 4.06, 249.94) },
+            { model = 'slamvan', coords = vector4(3818.29, 4460.94, 3.39, 325.08) },
+            { model = 'paradise', coords = vector4(3815.48, 4466.15, 3.43, 55.41) },
+        },
+        CasePositions = {
+            vector3(3818.01, 4474.57, 3.15),
+            vector3(3828.08, 4481.5, 2.83),
+            vector3(3827.94, 4470.56, 3.01),
+            vector3(3830.3, 4473.03, 3.01),
+            vector3(3821.19, 4460.02, 2.58),
+            vector3(3825.78, 4474.69, 5.18),
+            vector3(3824.56, 4450.58, 3.65),
+            vector3(3817.74, 4464.29, 2.74),
         }
     },
 }
