@@ -71,6 +71,9 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
 end)
 
 RegisterNetEvent('police:SetCopCount', function(amount)
+    if useDebug then
+        print('updating police count in raidjob:', amount)
+    end
     CurrentCops = amount
 end)
 
@@ -83,7 +86,12 @@ local function checkSkills(diff)
 end
 
 local function checkCops(diff)
-    return Config.Jobs[diff].minimumPolice >= CurrentCops
+    if useDebug then
+       print('CurrentCops:' ,CurrentCops)
+       print('Cop Req:' ,Config.Jobs[diff].minimumPolice)
+       print('Has enough cops:',Config.Jobs[diff].minimumPolice <= CurrentCops )
+    end
+    return Config.Jobs[diff].minimumPolice <= CurrentCops
 end
 
 local function getAllContent(object, diff)
@@ -122,7 +130,7 @@ local function canInteract(diff)
         hasToken = exports['cw-tokens']:hasToken(Config.Jobs[diff].token)
     end
 
-    return hasSkills and hasToken
+    return hasSkills and hasToken and hasCops
 end
 
 --- Create bosses

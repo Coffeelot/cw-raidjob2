@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Debug = true
+Config.Debug = false
 Config.Enabled = true
 Config.CleanupTimer = 20000
 
@@ -420,12 +420,6 @@ Config.Items = {
     caseContent = 'cw_raidjob_content',
 }
 
-Config.PotentialRewards = {
-    low = {
-
-    }
-}
-
 local lowJob = {
     paymentType = 'cash', -- what type of payment to enter, can be cash, band or crypto
     runCost = 1000, -- cost to take run
@@ -459,7 +453,7 @@ local lowJob = {
         },
     },
     Boss = {
-        coords = vector4(-159.55, 1907.82, 198.01, 88.75),
+        coords = vector4(-906.32, -365.25, 130.28, 25.17),
         model = 'g_f_importexport_01',
         missionTitle = "Accept weed raid",
         animation = 'WORLD_HUMAN_SMOKING_POT', -- OPTIONAL https://pastebin.com/6mrYTdQv
@@ -503,7 +497,7 @@ local midJob = {
         },
     },
     Boss = {
-        coords = vector4(-159.22, 1909.28, 197.93, 90.75),
+        coords = vector4(-903.84, -363.97, 130.28, 27.2),
         model = 'g_m_m_armlieut_01',
         missionTitle = "Accept weed raid",
         animation = 'WORLD_HUMAN_HANG_OUT_STREET', -- OPTIONAL https://pastebin.com/6mrYTdQv
@@ -521,7 +515,7 @@ local highJob = {
     timer = 22000, -- time (in ms) it takes to open case
     token = 'raidhigh',
     description = 'Raidjob2 for not as poor people',
-    minimumPolice = 0,
+    minimumPolice = 1,
     minLimit = 20, -- used for mz-skill check if enabled
     icon = 'fas fa-skull',
     Minigame = {
@@ -546,7 +540,7 @@ local highJob = {
         },
     },
     Boss = {
-        coords = vector4(-159.39, 1910.6, 197.92, 89.89),
+        coords = vector4(-902.6, -363.26, 130.28, 7.22),
         model = 'g_m_y_korlieut_01',
         missionTitle = "Accept weed raid",
         animation = 'WORLD_HUMAN_HANG_OUT_STREET', -- OPTIONAL https://pastebin.com/6mrYTdQv
