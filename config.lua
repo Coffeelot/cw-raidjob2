@@ -1,24 +1,24 @@
 Config = {}
 
-Config.Debug = false
-Config.Enabled = true
-Config.CleanupTimer = 20000
+Config.Debug = false -- toggle to true for debug logs 
+Config.Enabled = true -- disable/enable the interactions
+Config.CleanupTimer = 20000 -- Time after job completion that the script tries to clean up
 
-Config.UseTokens = false
-Config.Inventory = 'qb'
+Config.UseTokens = false -- for cw-tokesn
+Config.Inventory = 'qb' -- qb or ox. Nothing else will work.
 
-Config.UseMZSkills = false
-Config.Skill = 'Street Reputation'
+Config.UseMZSkills = false -- if you use mz-skills
+Config.Skill = 'Street Reputation' -- what skill you want to use with mz-skills
 
 Config.UseSundownUtils = false -- This should be false if you're not using Sundown Utils
 
-Config.UseRenewedPhoneGroups = false
+Config.UseRenewedPhoneGroups = false -- toggle if you want to allow groups through Renewed Phone
 Config.MaxGroupSize = 5 -- only used if UseRenewedPhoneGroups is true
-Config.SpawnDistance = 200
+Config.SpawnDistance = 200 -- How close a player in the group can be before the enemies spawn
 
 Config.UseRenewedCrypto = false -- set to true if you use renewed phone crypto
 Config.CryptoType = 'MOON' -- set your crypto here
-Config.BossTalkTime = 5000
+Config.BossTalkTime = 5000 -- progress bar time for talking to bosses
 
 Config.Cooldown = 10000 --- Cooldown until next allowed run (in seconds)
 Config.DefaultValues = {
