@@ -497,6 +497,14 @@ RegisterServerEvent('cw-raidjob2:server:unlock', function (jobId)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.no_key"), 'error')
     end
+    if Config.UseMZSkills then
+        for i,v in pairs(ActiveJobs[jobId].Group) do
+            if useDebug then
+               print('increasing skill', Config.Skill, Config.SkillAmount)
+            end
+            exports["mz-skills"]:UpdateSkill(Config.Skill, 1)
+        end
+    end
 end)
 
 RegisterServerEvent('cw-raidjob2:server:givePayout', function(diff)
@@ -525,14 +533,14 @@ RegisterServerEvent('cw-raidjob2:server:givePayout', function(diff)
             print('payout', payoutType, payoutAmount)
         end
         if payoutType == 'cash' then
-            Player.Functions.AddMoney('cash', payoutAmount)
+            Player.Functions.AddMoney('cash', payoutAmount, 'Raid job payment: '..diff)
         elseif payoutType == 'bank' then
-            Player.Functions.AddMoney('bank', payoutAmount)
+            Player.Functions.AddMoney('bank', payoutAmount, 'Raid job payment: '..diff)
         elseif payoutType == 'crypto' then
             if Config.UseRenewedCrypto then
                 exports['qb-phone']:AddCrypto(src, Config.CryptoType, payoutAmount)
             else
-                Player.Functions.AddMoney('crypto', tonumber(payoutAmount))
+                Player.Functions.AddMoney('crypto', tonumber(payoutAmount), 'Raid job payment: '..diff)
             end
         end
     else

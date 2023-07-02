@@ -9,6 +9,7 @@ Config.Inventory = 'qb' -- qb or ox. Nothing else will work.
 
 Config.UseMZSkills = false -- if you use mz-skills
 Config.Skill = 'Street Reputation' -- what skill you want to use with mz-skills
+Config.SkillAmount = 1
 
 Config.UseSundownUtils = false -- This should be false if you're not using Sundown Utils
 
