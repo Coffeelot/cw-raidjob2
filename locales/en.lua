@@ -21,7 +21,8 @@ local Translations = {
         ["turn_in_goods"]                   = "Turn in goods.",
         ["unlock_first"]                = "Unlock first lock",
         ["search_key"]                  = "Search for key",
-        ["picked_up_key"]                  = "You picked up the key"
+        ["picked_up_key"]                  = "You picked up the key",
+        ["cancel_job"]                  = "Cancel current job",
     },
     mailstart = {
         ["sender"]                      = "Unknown",
