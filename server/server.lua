@@ -78,7 +78,7 @@ local function activateRun(src, jobDiff, jobLocation)
             if useDebug then
                print('member', i,v)
             end
-            memberTable[#memberTable+1]= { [i] = 1}
+            memberTable[i] = 1
             TriggerClientEvent('cw-raidjob2:client:runactivate', i, jobId, jobDiff, jobLocation)
         end
         ActiveJobs[jobId].Group = memberTable
@@ -497,14 +497,6 @@ RegisterServerEvent('cw-raidjob2:server:unlock', function (jobId)
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.no_key"), 'error')
     end
-    if Config.UseMZSkills then
-        for i,v in pairs(ActiveJobs[jobId].Group) do
-            if useDebug then
-               print('increasing skill', Config.Skill, Config.SkillAmount)
-            end
-            exports["mz-skills"]:UpdateSkill(Config.Skill, 1)
-        end
-    end
 end)
 
 RegisterServerEvent('cw-raidjob2:server:givePayout', function(diff)
@@ -570,4 +562,13 @@ end)
 
 QBCore.Functions.CreateCallback("cw-raidjob2:server:isInCooldown",function(source, cb)
      cb(Cooldown)
+end)
+
+RegisterServerEvent('cw-raidjob2:server:cancelJob', function(jobId)
+    for i,v in pairs(ActiveJobs[jobId].Group) do
+        if useDebug then
+           print('canceling job', jobId, i )
+        end
+        TriggerClientEvent('cw-raidjob2:client:jobCanceled', i)
+    end
 end)

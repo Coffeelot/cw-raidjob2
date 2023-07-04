@@ -168,6 +168,17 @@ CreateThread(function()
             },
             {
                 type = "client",
+                event = "cw-raidjob2:client:cancelJob",
+                diff = diff,
+                icon = job.icon,
+                label = Lang:t('info.cancel_job'),
+                canInteract = function()
+                    if not Config.Enabled then return false end
+                    return onRun
+                end
+            },
+            {
+                type = "client",
                 event = "cw-raidjob2:client:turnInGoods",
                 diff = diff,
                 icon = 'fas fa-hand-holding-usd',
@@ -183,6 +194,10 @@ CreateThread(function()
             distance = 2.0
         })
     end
+end)
+
+RegisterNetEvent('cw-raidjob2:client:cancelJob', function(data)
+    TriggerServerEvent('cw-raidjob2:server:cancelJob', CurrentJob.jobId)
 end)
 
 RegisterNetEvent('cw-raidjob2:client:turnInGoods', function(data)
@@ -371,7 +386,7 @@ end
 
 RegisterNetEvent('cw-raidjob2:client:spawnCase', function(networkId)
     while not DoesEntityExist(NetworkGetEntityFromNetworkId(networkId)) do
-        Wait(100)
+        Wait(1000)
     end
     local entity = NetworkGetEntityFromNetworkId(networkId)
     Entities[#Entities+1] = entity
@@ -466,7 +481,7 @@ RegisterNetEvent('cw-raidjob2:client:setRelationsAndStats', function(npcs, npcSt
            print('guards', networkId,v)
         end
         while not DoesEntityExist(NetworkGetEntityFromNetworkId(networkId)) do
-            Wait(100)
+            Wait(1000)
         end
         local entity = NetworkGetEntityFromNetworkId(networkId)
         if useDebug then
@@ -485,7 +500,7 @@ RegisterNetEvent('cw-raidjob2:client:setRelationsAndStats', function(npcs, npcSt
            print('civs', networkId,v)
         end
         while not DoesEntityExist(NetworkGetEntityFromNetworkId(networkId)) do 
-            Wait(100)
+            Wait(1000)
         end
         local entity = NetworkGetEntityFromNetworkId(networkId)
         SetPedRelationshipGroupHash(entity, GuardPopGroup)
@@ -504,7 +519,7 @@ RegisterNetEvent('cw-raidjob2:client:setVehicleEntities', function(vehicles)
         end
         for networkId, v in pairs(vehicles) do
             while not DoesEntityExist(NetworkGetEntityFromNetworkId(networkId)) do 
-                Wait(100)
+                Wait(1000)
             end
             local entity = NetworkGetEntityFromNetworkId(networkId)
             Entities[#Entities+1] = entity
@@ -526,7 +541,7 @@ local function checkDistance()
                 print('distance', distance)
             end
             if(distance < Config.SpawnDistance) then
-                print('spawning enemies')
+                if useDebug then print('spawning enemies') end
                 TriggerServerEvent('cw-raidjob2:server:spawn', CurrentJob.jobId, CurrentJob.jobDiff, CurrentJob.jobLocationName)
                 break
             end
@@ -616,6 +631,20 @@ end)
 
 RegisterNetEvent('cw-raidjob2:client:caseUnlocked', function()
     CurrentJob = {}
+    if Config.UseMZSkills then
+        exports["mz-skills"]:UpdateSkill(Config.Skill, Config.SkillAmount)
+    end
+    SetTimeout(Config.CleanupTimer, function()
+        CleanUp()
+    end)
+    onRun = false
+end)
+
+RegisterNetEvent('cw-raidjob2:client:jobCanceled', function(data)
+    CurrentJob = {}
+    if Config.UseMZSkills then
+        exports["mz-skills"]:UpdateSkill(Config.Skill, -Config.SkillAmount)
+    end
     SetTimeout(Config.CleanupTimer, function()
         CleanUp()
     end)
