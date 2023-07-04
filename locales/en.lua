@@ -23,6 +23,8 @@ local Translations = {
         ["search_key"]                  = "Search for key",
         ["picked_up_key"]                  = "You picked up the key",
         ["cancel_job"]                  = "Cancel current job",
+        ["job_canceled"]                  = "The raid job was canceled",
+        ["canceling_job"]                  = "Canceling job",
     },
     mailstart = {
         ["sender"]                      = "Unknown",
