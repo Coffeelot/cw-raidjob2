@@ -1,4 +1,7 @@
 # Raidjob 2
+
+> If you are using OX then get **[this](https://github.com/Coffeelot/cw-raidjob2-ox)** version instead
+
 A QB based script that is more of a system than a plug and play job script. To utilize this script to it's fullest you need to be able to at least do some Config devving, if that's to much then go find another script ✌ This script comes with several npcs and pre made locations and jobs to do, but the idea of it is for YOU to create your own jobs! The Config comes full off comments to guide you.
 
 **By default you can find ALL the mission givers on a rooftop at: `-905.68, -360.94, 130.28`** Make sure you move them 🔧
@@ -39,6 +42,7 @@ This also means raidjob(1) will be fully unsupported, and have reached it's End 
 [![YOUTUBE VIDEO](http://img.youtube.com/vi/tgw2OtYF9B0/0.jpg)](https://youtu.be/tgw2OtYF9B0)
 
 # Developed by Coffeelot and Wuggie
+[Tebex](https://cw-scripts.tebex.io/category/2523396) 👈\
 [More scripts by us](https://github.com/stars/Coffeelot/lists/cw-scripts)  👈
 
 **Support, updates and script previews**:
