@@ -1,6 +1,8 @@
 # Raidjob 2
+### ⭐ Check out our [Tebex store](https://cw-scripts.tebex.io/category/2523396) for some cheap scripts ⭐
 
-> If you are using OX then get **[this](https://github.com/Coffeelot/cw-raidjob2-ox)** version instead
+
+> If you are using OX then get **[this](https://github.com/Coffeelot/cw-raidjob2-ox)** version instead. It fixes the majority of issues that this variant has, like npc spawning issues. This version also won't get updates
 
 A QB based script that is more of a system than a plug and play job script. To utilize this script to it's fullest you need to be able to at least do some Config devving, if that's to much then go find another script ✌ This script comes with several npcs and pre made locations and jobs to do, but the idea of it is for YOU to create your own jobs! The Config comes full off comments to guide you.
 
